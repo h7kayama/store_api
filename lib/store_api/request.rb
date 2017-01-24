@@ -48,6 +48,7 @@ module StoreApi
       if !proxy.nil? && !proxy.empty?
         if https
           http = Net::HTTP::Proxy(proxy[:host],proxy[:port]).new(host,443)
+          http.use_ssl = true
         else
           http = Net::HTTP::Proxy(proxy[:host],proxy[:port]).new(host)
         end
